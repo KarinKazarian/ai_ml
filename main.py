@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 file_name = '000_multi_serie_forecaster.pickle'
