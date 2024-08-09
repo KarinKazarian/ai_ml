@@ -10,34 +10,34 @@
     <title>ML Model Input</title>
     <style>
         .gradient-background {
-            background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(105,105,153,1) 35%, rgba(156,215,227,1) 100%);
+            /* background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(105,105,153,1) 35%, rgba(156,215,227,1) 100%); */
             /* height: 100%; */
-            background-attachment: fixed;
+            /* background-attachment: fixed; */
+
+            margin: 0;
+            padding: 0;
+            /* background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/173/458/small_2x/abstract-pink-sharp-line-pattern-overlapping-on-dark-blue-background-vector.jpg'); */
+            background-image: url('https://i.ibb.co/3vRZ0xK/New-Project.png');
+            background-repeat: repeat; /* This will repeat the image to fill the background */
+            background-size: auto; 
         }
     </style>
 </head>
 <body class="bg-light gradient-background"> 
     <div class="container text-center">
-        <h1>Anomaly Forecaster</h1>
-        <form action="/predict" method="post">
-            <label for="input_data">Input Data for ML Model</label>
-            <textarea class="form-control" id="input_data" rows="10" name="input_data" required="required">
-                [
-                    {
-                    "t": 0,
-                    "cell_id": 0,
-                    "cat_id": 0,
-                    "pe_id": 0,
-                    "load": 0,
-                    "has_anomaly": 0
-                    }
-                ]
-            </textarea>
+        <h1 class="text-primary">Anomaly Forecaster</h1>
+        <br>
+        <br>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="formFile" class="form-label text-light" >Data in CSV</label>
+                <input class="form-control" type="file" id="input_data" name="input_data" required="required" accept=".csv">
+              </div>
             <br>
             <div class="container">
-                <label for="formControlRange">Steps in the Future</label>
-                <input type="range" class="form-control-range" id="formControlRange" onInput="$('#rangeval').html($(this).val())" min="1" max="5" step="1" name="steps">
-                <span id="rangeval">3<!-- Default value --></span>
+                <label for="formControlRange" class="text-light">Steps in the Future</label>
+                <input type="range" class="form-control-range" id="formControlRange" onInput="$('#rangeval').html($(this).val())" min="1" max="20" step="1" name="steps">
+                <span id="rangeval" class="text-primary">11<!-- Default value --></span>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Predict</button>

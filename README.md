@@ -25,3 +25,24 @@ Or simply click:
 ## Thanks
 
 Thanks to [Harish](https://harishgarg.com) for the [inspiration to create a FastAPI quickstart for Render](https://twitter.com/harishkgarg/status/1435084018677010434) and for some sample code!
+
+# APP
+## Create the requirements.txt file
+`pip freeze > requirements.txt`
+
+## Start the Server
+`uvicorn app:app`
+`uvicorn app:app --reload`
+
+## Versions
+`pip install scikit-learn==1.3.2`
+`pip install skforecast==0.12.0`
+`pip install uvicorn fastapi joblib`
+`pip install pandas==2.1.4`
+`pip install plotly==5.15.0`
+`pip install Jinja2`
+`pip install python-multipart`
+
+## Create python env
+`python -m venv venv`
+`source venv/Scripts/activate`
