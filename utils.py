@@ -83,11 +83,17 @@ def get_prediction( data, steps):
 def get_plot_html(data):
   # Create heatmap
   fig = go.Figure(data=go.Heatmap(
-      z=data.values,                  # Values of the heatmap
-      x=data.columns,                 # Node names as x-axis labels
-      y=data.index,                   # Time as y-axis labels
-      colorscale='Viridis',         # Color scale
-      colorbar=dict(title='Anomaly Score'),  # Colorbar label
+    z=data.values,                  # Values of the heatmap
+    x=data.columns,                 # Node names as x-axis labels
+    y=data.index,                   # Time as y-axis labels (dates)
+    colorscale='Viridis',                    # Color scale
+    colorbar=dict(
+        title='Anomaly Score',
+        tickvals=[0, 0.5, 1],                # Ensure ticks are at 0, 0.5, and 1
+        ticktext=['0', '0.5', '1']          # Label for each tick
+    ),
+    zmin=0,                                  # Set color scale minimum
+    zmax=1                                   # Set color scale maximum
   ))
 
   # Update layout for better readability
@@ -95,7 +101,10 @@ def get_plot_html(data):
       title='Anomaly Scores Over Time',
       xaxis_title='Nodes',
       yaxis_title='Time',
-      yaxis=dict(tickmode='linear')
+      yaxis=dict(
+          tickmode='auto',
+          tickformat='%Y-%m-%d %H-%M-%S',                # Format dates in the y-axis
+      )
   )
 
   # Show the plot
